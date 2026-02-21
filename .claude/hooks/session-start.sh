@@ -6,11 +6,11 @@ if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
   exit 0
 fi
 
-# No dependency manifests detected yet.
-# Add install commands here as the project grows, for example:
-#   npm install          # for Node.js
-#   pip install -e .     # for Python
-#   bundle install       # for Ruby
-#   cargo build          # for Rust
+# C / C++ / Assembly toolchain setup
+# Pre-installed: gcc, g++, clang, clang-format, clang-tidy, as (GNU assembler),
+#                ld, make, cmake, gdb
+# Installed here: nasm (Netwide Assembler - x86/x86_64 dedicated assembler)
 
-echo "Session start hook complete. No dependencies to install."
+apt-get install -y --no-install-recommends nasm
+
+echo "Session start hook complete. C/C++/ASM toolchain ready."
