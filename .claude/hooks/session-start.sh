@@ -10,7 +10,9 @@ fi
 # Pre-installed: gcc, g++, clang, clang-format, clang-tidy, as (GNU assembler),
 #                ld, make, cmake, gdb
 # Installed here: nasm (Netwide Assembler - x86/x86_64 dedicated assembler)
-
 apt-get install -y --no-install-recommends nasm
 
-echo "Session start hook complete. C/C++/ASM toolchain ready."
+# Slack MCP server — ensures npx can resolve it without a network hit each session
+npx --yes @modelcontextprotocol/server-slack --version 2>/dev/null || true
+
+echo "Session start hook complete. C/C++/ASM toolchain and Slack MCP ready."
